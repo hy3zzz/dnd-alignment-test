@@ -1,8 +1,8 @@
 // ============================================
 // 설정
 // ============================================
-// 로컬 개발 시에만 API 키 입력 (배포 시에는 Netlify Functions 사용)
-const OPENAI_API_KEY = ''; // 로컬 테스트용 - 배포 시 비워두세요
+// OpenAI API 키 (로컬 테스트 시에만 입력, 배포 시 Netlify 환경변수 사용)
+const OPENAI_API_KEY = '';
 const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
 const NETLIFY_FUNCTION_URL = '/.netlify/functions/chat'; // Netlify Functions 엔드포인트
 const MODEL = 'gpt-4.1-mini'; // 또는 'gpt-4', 'gpt-4-turbo', 'gpt-3.5-turbo' 등
