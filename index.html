@@ -94,7 +94,7 @@
     <section id="result" class="page hidden fixed inset-0 bg-[#bdff17] result-page-container">
         <div class="relative w-full h-full">
             <!-- 책 뒷표지 -->
-            <div class="absolute bg-[#3475ff] book-cover-shadow book-texture rounded-lg result-book-cover">
+            <div class="absolute bg-[#3475ff] book-cover-shadow book-texture result-book-cover">
                 <!-- 제목 (피그마 기준: top-[43px]) -->
                 <div class="absolute left-1/2 top-[43px] -translate-x-1/2 text-center result-title-container">
                     <h2 class="result-title-h2 text-[#bdff17] mb-0 leading-none">THE</h2>
@@ -105,7 +105,10 @@
                 <!-- 정렬 아이콘/이미지 (피그마 기준: top-[265px] ~ top-[411px]) -->
                 <div class="absolute left-1/2 top-[265px] -translate-x-1/2 result-alignment-icon">
                     <!-- 정렬 SVG 이미지가 여기에 동적으로 삽입됨 -->
-                    <div class="result-image-container"></div>
+                    <div class="result-image-container">
+                        <!-- 미리보기용 기본 이미지 (게임 완료 시 동적으로 교체됨) -->
+                        <img src="assets/lawful%20neutral.svg" alt="alignment result" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
                 </div>
                 
                 <!-- 결과 설명 (SVG 아래 20px) -->
@@ -119,10 +122,11 @@
                     </p>
                 </div>
 
-                <!-- 바코드 -->
-                <div class="result-barcode-frame">
-                    <div class="result-barcode">
-                        <img src="assets/barcode.png" alt="barcode" class="result-barcode-image">
+                <!-- QR코드 -->
+                <div class="result-qr-frame">
+                    <div class="result-qr">
+                        <img src="assets/Adobe%20Express%20QR%20Code.svg" alt="QR Code" class="result-qr-image" style="width: 60px !important; height: 60px !important; max-width: 60px !important;">
+                        <p class="result-qr-text">재밌게 플레이하셨다면 QR을 찍어<br>스토리에 감상평을 남기고 제작자를 태그해주세요!</p>
                     </div>
                 </div>
             </div>
@@ -136,43 +140,60 @@
             
             <!-- 방명록 섹션 -->
             <div class="guestbook-container">
-                <div class="guestbook-header">
-                    <h3 class="guestbook-title">📜 방명록</h3>
-                    <p class="guestbook-subtitle">당신의 여정을 기록해주세요</p>
+                <div class="guestbook-header" onclick="toggleGuestbook()">
+                    <h3 class="guestbook-title">플레이 후기</h3>
+                    <span id="guestbookToggle" class="guestbook-toggle expanded">▼</span>
                 </div>
                 
-                <!-- 방명록 작성 폼 -->
-                <div class="guestbook-form">
-                    <div class="guestbook-input-row">
-                        <input 
-                            type="text" 
-                            id="guestbookNickname" 
-                            placeholder="닉네임" 
-                            maxlength="20"
-                            class="guestbook-input guestbook-nickname-input"
+                <!-- 방명록 본문 (접기/펼치기) -->
+                <div id="guestbookBody" class="guestbook-body">
+                    <!-- 부제목 (펼쳤을 때만 표시) -->
+                    <div class="guestbook-subtitle-container">
+                        <p class="guestbook-subtitle">플레이 해주셔서 감사합니다. 후기를 자유롭게 남겨주세요! <br> 또, 더 나은 로어롤을 위해 베타 테스터를 모집하고 있어요. 12월 중후반에 간단하게 테스팅을 진행할 예정이에요. 작은 사례를 제공해요!</p>
+                    </div>
+                    
+                    <!-- 방명록 작성 폼 -->
+                    <div class="guestbook-form">
+                        <div class="guestbook-input-row">
+                            <input 
+                                type="text" 
+                                id="guestbookNickname" 
+                                placeholder="닉네임" 
+                                maxlength="20"
+                                class="guestbook-input guestbook-nickname-input"
+                            >
+                        </div>
+                        <div class="guestbook-input-row">
+                            <textarea 
+                                id="guestbookMessage" 
+                                placeholder="플레이와 관련해 자유롭게 메시지를 남겨주세요..." 
+                                maxlength="200"
+                                rows="3"
+                                class="guestbook-input guestbook-message-input"
+                            ></textarea>
+                        </div>
+                        <div class="guestbook-input-row">
+                            <input 
+                                type="email" 
+                                id="guestbookEmail" 
+                                placeholder="베타테스터 이메일 (선택/댓글에 보이지 않아요!)" 
+                                maxlength="50"
+                                class="guestbook-input guestbook-email-input"
+                            >
+                        </div>
+                        <button 
+                            id="guestbookSubmitBtn"
+                            onclick="submitGuestbook()" 
+                            class="guestbook-submit-btn"
                         >
+                            남기기
+                        </button>
                     </div>
-                    <div class="guestbook-input-row">
-                        <textarea 
-                            id="guestbookMessage" 
-                            placeholder="메시지를 남겨주세요..." 
-                            maxlength="200"
-                            rows="3"
-                            class="guestbook-input guestbook-message-input"
-                        ></textarea>
+                    
+                    <!-- 방명록 목록 -->
+                    <div id="guestbookList" class="guestbook-list">
+                        <p class="guestbook-loading">방명록을 불러오는 중...</p>
                     </div>
-                    <button 
-                        id="guestbookSubmitBtn"
-                        onclick="submitGuestbook()" 
-                        class="guestbook-submit-btn"
-                    >
-                        남기기
-                    </button>
-                </div>
-                
-                <!-- 방명록 목록 -->
-                <div id="guestbookList" class="guestbook-list">
-                    <p class="guestbook-loading">방명록을 불러오는 중...</p>
                 </div>
             </div>
         </div>
