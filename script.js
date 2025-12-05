@@ -1,9 +1,14 @@
 // ============================================
 // 설정
 // ============================================
-const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY_HERE'; // API 키를 여기에 입력하거나 환경변수로 관리
+// 로컬 개발 시에만 API 키 입력 (배포 시에는 Netlify Functions 사용)
+const OPENAI_API_KEY = ''; // 로컬 테스트용 - 배포 시 비워두세요
 const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
+const NETLIFY_FUNCTION_URL = '/.netlify/functions/chat'; // Netlify Functions 엔드포인트
 const MODEL = 'gpt-4.1-mini'; // 또는 'gpt-4', 'gpt-4-turbo', 'gpt-3.5-turbo' 등
+
+// 환경 감지: localhost면 직접 API 호출, 아니면 Netlify Functions 사용
+const isLocalDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
 // ============================================
 // Supabase 설정
@@ -501,27 +506,52 @@ async function callOpenAIAPI(userMessage, systemMessage = GM_SYSTEM_PROMPT) {
             { role: 'user', content: userMessage }
         ];
         
-        const response = await fetch(OPENAI_API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OPENAI_API_KEY}`
-            },
-            body: JSON.stringify({
-                model: MODEL,
-                messages: messages,
-                temperature: 0.8,
-                max_tokens: 600, // 토큰 제한을 위해 800 -> 600으로 감소
-                response_format: { type: 'json_object' } // JSON 모드 강제
-            })
-        });
+        let response, data;
         
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(`API Error: ${error.error?.message || 'Unknown error'}`);
+        // 로컬 개발 환경: 직접 OpenAI API 호출
+        if (isLocalDev && OPENAI_API_KEY) {
+            response = await fetch(OPENAI_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${OPENAI_API_KEY}`
+                },
+                body: JSON.stringify({
+                    model: MODEL,
+                    messages: messages,
+                    temperature: 0.8,
+                    max_tokens: 600,
+                    response_format: { type: 'json_object' }
+                })
+            });
+            
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(`API Error: ${error.error?.message || 'Unknown error'}`);
+            }
+            
+            data = await response.json();
+        } 
+        // 프로덕션 환경: Netlify Functions를 통해 호출
+        else {
+            response = await fetch(NETLIFY_FUNCTION_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: MODEL,
+                    messages: messages
+                })
+            });
+            
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(`API Error: ${error.error || 'Unknown error'}`);
+            }
+            
+            data = await response.json();
         }
-        
-        const data = await response.json();
         const aiResponse = data.choices[0].message.content;
         
         // JSON 파싱
