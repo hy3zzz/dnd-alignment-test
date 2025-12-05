@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRPG 성향 테스트</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;700;900&family=Hahmlet:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section id="home" class="page active fixed inset-0 bg-[#6b1a1a] fade-in flex items-center justify-center p-4">
+        <!-- 엽서 컨테이너 - 반응형 -->
+        <div class="envelope-wrapper">
+            <!-- Tag 컴포넌트 -->
+            <div class="tag-container relative">
+                <!-- Tag SVG 배경 -->
+                <img src="assets/tag.svg" alt="Tag" class="tag-svg-background">
+                
+                <!-- For 옆 Input 필드 오버레이 -->
+                <div class="tag-input-overlay">
+                    <input type="text" id="userName" placeholder="이름을 입력해주세요">
+                </div>
+            </div>
+            
+            <!-- 엽서 뒷면 (z-index: 10) -->
+            <div class="envelope-back-container">
+                <img src="assets/envelope_back.svg" alt="Envelope Back">
+            </div>
+            
+            <!-- 엽서 앞면 (z-index: 30) - Glassmorphism 효과 -->
+            <div class="envelope-front-container">
+                <img src="assets/envelope_front.svg" alt="Envelope Front">
+            </div>
+        </div>
+        
+        <!-- 시작하기 버튼 (엽서 하단) -->
+        <button id="startButton" class="start-button" onclick="startGame()">D&D 성향 테스트 시작하기</button>
+    </section>
+
+    <!-- Game Page (책 페이지 컨셉) -->
+    <section id="game" class="page hidden fixed inset-0 bg-black">
+        <div class="relative w-full h-full flex items-center justify-center overflow-hidden">
+            <!-- 페이지 프레임 컨테이너 (동적으로 페이지가 추가됨) -->
+            <div id="gameFrameContainer" class="game-frame-wrapper">
+                <!-- 초기 페이지 프레임 -->
+                <div class="game-page-frame" id="currentPageFrame">
+                    <div class="bg-white game-page-container">
+                        <!-- Output 영역 (스토리 출력) -->
+                        <div class="story-output font-hahmlet text-base text-[#0f100f] overflow-y-auto game-story-output">
+                        </div>
+                        
+                        <!-- Text Field 영역 (유저 입력) -->
+                        <div class="game-action-input-container" style="display: none;">
+                            <input 
+                                type="text" 
+                                id="actionInput" 
+                                placeholder="행동을 자유롭게 입력하고 Enter를 누르세요..." 
+                                class="game-action-input"
+                                onkeypress="handleActionInput(event)"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 네비게이션 화살표 -->
+            <button onclick="previousPage()" class="absolute opacity-30 hover:opacity-100 transition-opacity flex items-center justify-center game-nav-arrow-left z-50">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 21L10 14L17 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <button onclick="nextPage()" class="absolute opacity-30 hover:opacity-100 transition-opacity flex items-center justify-center game-nav-arrow-right z-50">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 7L18 14L11 21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <!-- 처음으로 버튼 -->
+            <button onclick="goToHome()" 
+                    class="absolute bg-[#bdff17] text-black rounded-full hover:bg-[#a8e015] transition-colors flex items-center justify-center game-go-home-button z-50">
+                <span class="font-pretendard text-base game-go-home-button-text">처음으로</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Result Page (책 뒷표지 컨셉) -->
+    <section id="result" class="page hidden fixed inset-0 bg-[#bdff17] result-page-container">
+        <div class="relative w-full h-full">
+            <!-- 책 뒷표지 -->
+            <div class="absolute bg-[#3475ff] book-cover-shadow book-texture rounded-lg result-book-cover">
+                <!-- 제목 (피그마 기준: top-[43px]) -->
+                <div class="absolute left-1/2 top-[43px] -translate-x-1/2 text-center result-title-container">
+                    <h2 class="result-title-h2 text-[#bdff17] mb-0 leading-none">THE</h2>
+                    <h1 class="result-title-h1 text-[#bdff17] leading-[0.8] mb-[-4px]" id="resultTitle">lawful<br>neutral
+                    </h1>
+                </div>
+                
+                <!-- 정렬 아이콘/이미지 (피그마 기준: top-[265px] ~ top-[411px]) -->
+                <div class="absolute left-1/2 top-[265px] -translate-x-1/2 result-alignment-icon">
+                    <!-- 정렬 SVG 이미지가 여기에 동적으로 삽입됨 -->
+                    <div class="result-image-container"></div>
+                </div>
+                
+                <!-- 결과 설명 (SVG 아래 20px) -->
+                <div class="absolute left-1/2 -translate-x-1/2 result-description-container">
+                    <p id="resultDescription" class="result-description text-[#0f100f] text-center">
+                        공정한 거래였습니다. 당신은 치킨 쿠폰 5장을 받았고, 김민수는 구슬을 회수해 정직원이 되었습니다.<br><br>
+                        그날 저녁, 당신은 쿠폰으로 시킨 치킨을 먹으며 넷플릭스를 봅니다. 평화로운 금요일 밤입니다.<br><br>
+                        '정직원 되고 첫 월급 받았어요! 그때 쿠폰 5장만 드려서 죄송했어요ㅠㅠ 제 직원 할인으로 치킨 10마리 보냅니다!'<br><br>
+                        다음날, 정말로 치킨 10마리가 배송됩니다.<br><br>
+                        당신은 질서와 공정함을 중시하는 사람입니다. 규칙을 따르고 약속을 지키며, 거래는 공정해야 한다고 믿습니다. 감정보다는 원칙으로 판단합니다.
+                    </p>
+                </div>
+
+                <!-- 바코드 -->
+                <div class="result-barcode-frame">
+                    <div class="result-barcode">
+                        <img src="assets/barcode.png" alt="barcode" class="result-barcode-image">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 처음으로 링크 (피그마 기준: top-[0.46px], left: calc(50% - 540px), width: 1080px) -->
+            <div class="absolute flex items-center result-go-home-container">
+                <button onclick="goToHome()" class="result-go-home-button text-black hover:underline">
+                    /처음으로
+                </button>
+            </div>
+            
+            <!-- 방명록 섹션 -->
+            <div class="guestbook-container">
+                <div class="guestbook-header">
+                    <h3 class="guestbook-title">📜 방명록</h3>
+                    <p class="guestbook-subtitle">당신의 여정을 기록해주세요</p>
+                </div>
+                
+                <!-- 방명록 작성 폼 -->
+                <div class="guestbook-form">
+                    <div class="guestbook-input-row">
+                        <input 
+                            type="text" 
+                            id="guestbookNickname" 
+                            placeholder="닉네임" 
+                            maxlength="20"
+                            class="guestbook-input guestbook-nickname-input"
+                        >
+                    </div>
+                    <div class="guestbook-input-row">
+                        <textarea 
+                            id="guestbookMessage" 
+                            placeholder="메시지를 남겨주세요..." 
+                            maxlength="200"
+                            rows="3"
+                            class="guestbook-input guestbook-message-input"
+                        ></textarea>
+                    </div>
+                    <button 
+                        id="guestbookSubmitBtn"
+                        onclick="submitGuestbook()" 
+                        class="guestbook-submit-btn"
+                    >
+                        남기기
+                    </button>
+                </div>
+                
+                <!-- 방명록 목록 -->
+                <div id="guestbookList" class="guestbook-list">
+                    <p class="guestbook-loading">방명록을 불러오는 중...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

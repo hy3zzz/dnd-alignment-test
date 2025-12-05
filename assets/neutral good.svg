@@ -1,0 +1,72 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Repeat group 1_inner" data-figma-trr="r14u8.3-0f">
+<g clip-path="url(#paint0_diamond_3064_20558_clip_path)" data-figma-skip-parse="true"><g transform="matrix(0 0.00151662 -0.00151662 0 100.307 18.5147)"><rect x="0" y="0" width="1079.21" height="1079.21" fill="url(#paint0_diamond_3064_20558)" opacity="1" shape-rendering="crispEdges"/><rect x="0" y="0" width="1079.21" height="1079.21" transform="scale(1 -1)" fill="url(#paint0_diamond_3064_20558)" opacity="1" shape-rendering="crispEdges"/><rect x="0" y="0" width="1079.21" height="1079.21" transform="scale(-1 1)" fill="url(#paint0_diamond_3064_20558)" opacity="1" shape-rendering="crispEdges"/><rect x="0" y="0" width="1079.21" height="1079.21" transform="scale(-1)" fill="url(#paint0_diamond_3064_20558)" opacity="1" shape-rendering="crispEdges"/></g></g><circle cx="100.307" cy="18.5147" r="1.51662" data-figma-gradient-fill="{&#34;type&#34;:&#34;GRADIENT_DIAMOND&#34;,&#34;stops&#34;:[{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:0.61666667461395264,&#34;b&#34;:0.0,&#34;a&#34;:1.0},&#34;position&#34;:0.0},{&#34;color&#34;:{&#34;r&#34;:0.74117648601531982,&#34;g&#34;:1.0,&#34;b&#34;:0.090196080505847931,&#34;a&#34;:1.0},&#34;position&#34;:1.0}],&#34;stopsVar&#34;:[{&#34;color&#34;:{&#34;r&#34;:1.0,&#34;g&#34;:0.61666667461395264,&#34;b&#34;:0.0,&#34;a&#34;:1.0},&#34;position&#34;:0.0},{&#34;color&#34;:{&#34;r&#34;:0.74117648601531982,&#34;g&#34;:1.0,&#34;b&#34;:0.090196080505847931,&#34;a&#34;:1.0},&#34;position&#34;:1.0}],&#34;transform&#34;:{&#34;m00&#34;:1.8573210395289244e-16,&#34;m01&#34;:-3.0332353115081787,&#34;m02&#34;:101.82327270507812,&#34;m10&#34;:3.0332353115081787,&#34;m11&#34;:1.8573210395289244e-16,&#34;m12&#34;:16.9980468750},&#34;opacity&#34;:1.0,&#34;blendMode&#34;:&#34;NORMAL&#34;,&#34;visible&#34;:true}"/>
+</g>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(23.4285 -40.4414) rotate(25.7143)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(62.0838 -66.7126) rotate(51.4286)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(108.31 -73.6102) rotate(77.1429)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(152.95 -59.7682) rotate(102.857)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(187.164 -27.928) rotate(128.571)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(204.175 15.604) rotate(154.286)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(200.614 62.2057) rotate(-180)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(177.185 102.647) rotate(-154.286)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(138.53 128.918) rotate(-128.571)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(92.3043 135.816) rotate(-102.857)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(47.6635 121.974) rotate(-77.1429)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(13.4494 90.1336) rotate(-51.4286)"/>
+<use xlink:href="#Repeat%20group%201_inner" transform="translate(-3.56151 46.6017) rotate(-25.7143)"/>
+<path d="M99.9551 21.5352C103.226 26.7337 109.173 32.6274 105.959 37.8606C105.69 38.2972 105.368 38.709 104.99 39.0864C102.335 41.7415 97.9794 41.6906 95.2613 38.9726C94.8452 38.5564 94.4915 38.1018 94.2006 37.6208C91.0758 32.4556 96.7604 26.6574 99.9551 21.5352Z" fill="#FF3D3D"/>
+<g filter="url(#filter0_f_3064_20558)">
+<path d="M100.033 34.2031C101.104 35.9044 103.05 37.8332 101.998 39.5459C101.91 39.6888 101.805 39.8236 101.681 39.9471C100.812 40.816 99.3866 40.7993 98.4971 39.9098C98.3609 39.7736 98.2452 39.6249 98.1499 39.4674C97.1273 37.777 98.9877 35.8795 100.033 34.2031Z" fill="#FFBB11"/>
+</g>
+<path d="M100.296 149.271C95.4228 149.271 91.4512 145.3 91.4512 140.427C91.4512 135.554 95.4228 131.583 100.296 131.583C105.168 131.583 109.14 135.554 109.14 140.427C109.14 145.3 105.168 149.271 100.296 149.271ZM100.296 144.933C102.799 144.933 104.801 142.93 104.801 140.427C104.801 137.924 102.799 135.921 100.296 135.921C97.7925 135.921 95.79 137.924 95.79 140.427C95.79 142.93 97.7925 144.933 100.296 144.933Z" fill="#BDFF17"/>
+<path d="M100.296 163.143C95.4228 163.143 91.4512 159.171 91.4512 154.298C91.4512 149.425 95.4228 145.454 100.296 145.454C105.168 145.454 109.14 149.425 109.14 154.298C109.14 159.171 105.168 163.143 100.296 163.143ZM100.296 158.804C102.799 158.804 104.801 156.801 104.801 154.298C104.801 151.795 102.799 149.792 100.296 149.792C97.7925 149.792 95.79 151.795 95.79 154.298C95.79 156.801 97.7925 158.804 100.296 158.804Z" fill="#BDFF17"/>
+<path d="M72 187C72 183.288 72.7311 179.613 74.1515 176.184C75.5719 172.755 77.6538 169.639 80.2784 167.014C82.903 164.39 86.0188 162.308 89.448 160.887C92.8772 159.467 96.5526 158.736 100.264 158.736C103.976 158.736 107.651 159.467 111.081 160.887C114.51 162.308 117.626 164.39 120.25 167.014C122.875 169.639 124.957 172.755 126.377 176.184C127.797 179.613 128.529 183.288 128.529 187L100.264 187L72 187Z" fill="#BDFF17"/>
+<path d="M83.3994 118.637C83.3994 120.851 83.8356 123.044 84.6832 125.091C85.5307 127.137 86.773 128.996 88.339 130.562C89.9051 132.128 91.7642 133.37 93.8104 134.218C95.8565 135.065 98.0495 135.502 100.264 135.502C102.479 135.502 104.672 135.065 106.718 134.218C108.764 133.37 110.623 132.128 112.19 130.562C113.756 128.996 114.998 127.137 115.845 125.091C116.693 123.044 117.129 120.851 117.129 118.637L100.264 118.637L83.3994 118.637Z" fill="#BDFF17"/>
+<path d="M104.37 50.5371C104.37 52.8927 105.872 54.8023 107.725 54.8023H92.5332C94.386 54.8023 95.8888 52.8927 95.8888 50.5371V46.1953H104.37V50.5371Z" fill="#EAEBEA"/>
+<rect x="89.9551" y="54.8027" width="20.3479" height="65.9846" fill="url(#paint1_linear_3064_20558)"/>
+<g id="Repeat group 3_inner" data-figma-trr="r27u18.2-0f">
+<ellipse cx="100.303" cy="13.9442" rx="0.857749" ry="0.92373" fill="#FFEE00"/>
+</g>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(9.79659 -22.3025) rotate(13.3333)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(24.4724 -41.7445) rotate(26.6667)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(43.2363 -57.278) rotate(40)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(65.0767 -68.0656) rotate(53.3333)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(88.8161 -73.5257) rotate(66.6667)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(113.175 -73.3638) rotate(80)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(136.84 -67.5889) rotate(93.3333)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(158.535 -56.5121) rotate(106.667)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(177.091 -40.7306) rotate(120)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(191.507 -21.0953) rotate(133.333)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(201.006 1.33538) rotate(146.667)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(205.077 25.3521) rotate(160)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(203.499 49.6602) rotate(173.333)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(196.358 72.9492) rotate(-173.333)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(184.038 93.9636) rotate(-160)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(167.204 111.57) rotate(-146.667)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(146.764 124.821) rotate(-133.333)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(123.819 133) rotate(-120)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(99.6063 135.667) rotate(-106.667)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(75.431 132.678) rotate(-93.3333)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(52.5967 124.195) rotate(-80)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(32.3342 110.674) rotate(-66.6667)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(15.7359 92.8455) rotate(-53.3333)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(3.69671 71.6693) rotate(-40)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(-3.13443 48.2875) rotate(-26.6667)"/>
+<use xlink:href="#Repeat%20group%203_inner" transform="translate(-4.38921 23.9606) rotate(-13.3333)"/>
+<defs>
+<clipPath id="paint0_diamond_3064_20558_clip_path"><circle cx="100.307" cy="18.5147" r="1.51662"/></clipPath><filter id="filter0_f_3064_20558" x="95.4067" y="31.7573" width="9.33982" height="11.2763" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="1.2229" result="effect1_foregroundBlur_3064_20558"/>
+</filter>
+<linearGradient id="paint0_diamond_3064_20558" x1="0" y1="0" x2="500" y2="500" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF9D00"/>
+<stop offset="1" stop-color="#BDFF17"/>
+</linearGradient>
+<linearGradient id="paint1_linear_3064_20558" x1="100.129" y1="54.8027" x2="100.129" y2="120.787" gradientUnits="userSpaceOnUse">
+<stop stop-color="#EAEBEA"/>
+<stop offset="1" stop-color="#FFE481"/>
+</linearGradient>
+</defs>
+</svg>
